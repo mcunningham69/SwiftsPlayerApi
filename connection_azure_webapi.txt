@@ -1,0 +1,8 @@
+[
+  {
+    "name": "DefaultConnection",
+    "slotSetting": false,
+    "type": "PostgreSQL",
+    "value": "Host=swiftsplayers.postgres.database.azure.com;Port=5432;Database=Swifts;Username=apiclient@swiftsplayers;Password=ApiTest123;Ssl Mode=Require;Trust Server Certificate=true;"
+  }
+]
