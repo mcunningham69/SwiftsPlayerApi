@@ -32,22 +32,6 @@ public partial class Playerstatus
     public int? Visits { get; set; }
     public int? DurationInSeconds { get; set; }
 
-    /* public int? Isplaying { get; set; }
-
-     public int? Iswaiting { get; set; }
-
-     public int? Isselectable { get; set; }
-
-     public int? Isfacilitator { get; set; }
-
-     public int? Ischoosing { get; set; }
-
-     public int? Istimeout { get; set; }
-
-     public int? Warmingup { get; set; }
-     public int? Ischosen { get; set; }
-
-     public int? Isadmin { get; set; }*/
     public bool? Isplaying { get; set; }
 
     public bool? Iswaiting { get; set; }
@@ -87,6 +71,8 @@ public partial class Playerstatus
     public DateOnly? Firstvisit { get; set; }
 
     public DateOnly? Lastvisit { get; set; }
+
+    public bool? Notified { get; set; }
 
 
 }

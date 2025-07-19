@@ -50,6 +50,7 @@ public SwiftsContext(DbContextOptions<SwiftsContext> options)
             entity.Property(e => e.Isadmin).HasColumnName("isadmin");
             entity.Property(e => e.Ischoosing).HasColumnName("ischoosing");
             entity.Property(e => e.Ischosen).HasColumnName("ischosen");
+            entity.Property(e => e.Notified).HasColumnName("notified");
             entity.Property(e => e.Isfacilitator).HasColumnName("isfacilitator");
             entity.Property(e => e.Isplaying).HasColumnName("isplaying");
             entity.Property(e => e.Isselectable).HasColumnName("isselectable");

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "02ECC3twO0M=",
+  "dgSpecHash": "BZogZ+IJM8Y=",
   "success": true,
-  "projectFilePath": "/Users/mcunningham/code/SwiftsPlayerApi/SwiftsPlayerApi.csproj",
+  "projectFilePath": "/Users/mcunningham/GitHub/SwiftsPlayerApi/SwiftsPlayerApi.csproj",
   "expectedPackageFiles": [
     "/Users/mcunningham/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/mcunningham/.nuget/packages/microsoft.aspnetcore.openapi/9.0.1/microsoft.aspnetcore.openapi.9.0.1.nupkg.sha512",

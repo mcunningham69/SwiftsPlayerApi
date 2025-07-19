@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mcunningham/code/SwiftsPlayerApi/SwiftsPlayerApi.csproj": {}
+    "/Users/mcunningham/GitHub/SwiftsPlayerApi/SwiftsPlayerApi.csproj": {}
   },
   "projects": {
-    "/Users/mcunningham/code/SwiftsPlayerApi/SwiftsPlayerApi.csproj": {
+    "/Users/mcunningham/GitHub/SwiftsPlayerApi/SwiftsPlayerApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mcunningham/code/SwiftsPlayerApi/SwiftsPlayerApi.csproj",
+        "projectUniqueName": "/Users/mcunningham/GitHub/SwiftsPlayerApi/SwiftsPlayerApi.csproj",
         "projectName": "SwiftsPlayerApi",
-        "projectPath": "/Users/mcunningham/code/SwiftsPlayerApi/SwiftsPlayerApi.csproj",
+        "projectPath": "/Users/mcunningham/GitHub/SwiftsPlayerApi/SwiftsPlayerApi.csproj",
         "packagesPath": "/Users/mcunningham/.nuget/packages/",
-        "outputPath": "/Users/mcunningham/code/SwiftsPlayerApi/obj/",
+        "outputPath": "/Users/mcunningham/GitHub/SwiftsPlayerApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/mcunningham/.nuget/NuGet/NuGet.Config"
