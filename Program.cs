@@ -2,6 +2,7 @@
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SwiftsPlayerApi.Json;
 using SwiftsPlayerApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +30,7 @@ builder.Services.AddDbContext<SwiftsContext>(options =>
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+
 });
 
 builder.Services.AddEndpointsApiExplorer();
@@ -51,7 +53,6 @@ builder.Services.Configure<JsonOptions>(options =>
 {
     options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
 });
-
 
 
 var app = builder.Build();

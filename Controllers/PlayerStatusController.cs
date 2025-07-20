@@ -91,7 +91,7 @@ namespace SwiftsPlayerApi.Controllers
             target.Squareid = source.Squareid;
             target.Gameid = source.Gameid;
             target.Playercategories = source.Playercategories;
-            target.Durationinseconds = source.Durationinseconds;
+            target.DurationInSeconds = source.DurationInSeconds;
             target.Notified = source.Notified;
         }
 
