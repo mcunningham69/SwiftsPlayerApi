@@ -56,12 +56,45 @@ namespace SwiftsPlayerApi.Controllers
             }
 
             Console.WriteLine($"🔄 PUT updating player {id}: {updatedPlayer.Playername}");
-            _context.Entry(existing).CurrentValues.SetValues(updatedPlayer);
+            CopyValues(updatedPlayer, existing);
             await _context.SaveChangesAsync();
             Console.WriteLine($"✅ PUT successful: Player {id} updated");
 
             return NoContent();
         }
+
+        private void CopyValues(Playerstatus source, Playerstatus target)
+        {
+            target.Playername = source.Playername;
+            target.Firstname = source.Firstname;
+            target.Surname = source.Surname;
+            target.Email = source.Email;
+            target.Visits = source.Visits;
+            target.Isplaying = source.Isplaying;
+            target.Iswaiting = source.Iswaiting;
+            target.Isselectable = source.Isselectable;
+            target.Isfacilitator = source.Isfacilitator;
+            target.Ischoosing = source.Ischoosing;
+            target.Istimeout = source.Istimeout;
+            target.Warmingup = source.Warmingup;
+            target.Grade = source.Grade;
+            target.Gamescount = source.Gamescount;
+            target.Ischosen = source.Ischosen;
+            target.Isadmin = source.Isadmin;
+            target.Courtno = source.Courtno;
+            target.Attendingsession = source.Attendingsession;
+            target.Firstvisit = source.Firstvisit;
+            target.Lastvisit = source.Lastvisit;
+            target.Startedat = source.Startedat;
+            target.Finishedat = source.Finishedat;
+            target.Orderofplay = source.Orderofplay;
+            target.Squareid = source.Squareid;
+            target.Gameid = source.Gameid;
+            target.Playercategories = source.Playercategories;
+            target.Durationinseconds = source.Durationinseconds;
+            target.Notified = source.Notified;
+        }
+
 
     }
 }
