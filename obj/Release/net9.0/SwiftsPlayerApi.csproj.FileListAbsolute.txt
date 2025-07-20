@@ -267,3 +267,4 @@
 /Users/mcunningham/GitHub/SwiftsPlayerApi/obj/Release/net9.0/SwiftsPlayerApi.pdb
 /Users/mcunningham/GitHub/SwiftsPlayerApi/obj/Release/net9.0/SwiftsPlayerApi.genruntimeconfig.cache
 /Users/mcunningham/GitHub/SwiftsPlayerApi/obj/Release/net9.0/ref/SwiftsPlayerApi.dll
+/Users/mcunningham/GitHub/SwiftsPlayerApi/bin/Release/net9.0/Microsoft.AspNetCore.Mvc.Versioning.dll

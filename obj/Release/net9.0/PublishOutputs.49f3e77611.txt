@@ -4,6 +4,7 @@
 /Users/mcunningham/GitHub/SwiftsPlayerApi/publish/SwiftsPlayerApi.dll
 /Users/mcunningham/GitHub/SwiftsPlayerApi/publish/SwiftsPlayerApi.runtimeconfig.json
 /Users/mcunningham/GitHub/SwiftsPlayerApi/publish/SwiftsPlayerApi.pdb
+/Users/mcunningham/GitHub/SwiftsPlayerApi/publish/Microsoft.AspNetCore.Mvc.Versioning.dll
 /Users/mcunningham/GitHub/SwiftsPlayerApi/publish/Microsoft.AspNetCore.OpenApi.dll
 /Users/mcunningham/GitHub/SwiftsPlayerApi/publish/Microsoft.EntityFrameworkCore.dll
 /Users/mcunningham/GitHub/SwiftsPlayerApi/publish/Microsoft.EntityFrameworkCore.Abstractions.dll

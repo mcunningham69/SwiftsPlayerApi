@@ -5,7 +5,8 @@ using SwiftsPlayerApi.Models; // adjust to match your namespace
 namespace SwiftsPlayerApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
+    [ApiVersion("1.0")]
     public class PlayerStatusController : ControllerBase
     {
         private readonly SwiftsContext _context;
@@ -37,5 +38,30 @@ namespace SwiftsPlayerApi.Controllers
             await _context.SaveChangesAsync();
             return Ok();
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody] Playerstatus updatedPlayer)
+        {
+            if (id != updatedPlayer.Playerid)
+            {
+                Console.WriteLine($"❌ PUT rejected: URL ID {id} does not match body ID {updatedPlayer.Playerid}");
+                return BadRequest("Player ID in URL does not match body");
+            }
+
+            var existing = await _context.Playerstatus.FindAsync(id);
+            if (existing == null)
+            {
+                Console.WriteLine($"❌ PUT failed: No player found with ID {id}");
+                return NotFound($"No player found with ID {id}");
+            }
+
+            Console.WriteLine($"🔄 PUT updating player {id}: {updatedPlayer.Playername}");
+            _context.Entry(existing).CurrentValues.SetValues(updatedPlayer);
+            await _context.SaveChangesAsync();
+            Console.WriteLine($"✅ PUT successful: Player {id} updated");
+
+            return NoContent();
+        }
+
     }
 }
