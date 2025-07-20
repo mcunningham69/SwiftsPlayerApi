@@ -68,10 +68,6 @@ public partial class Playerstatus
 
     public int? Gameid { get; set; }
 
-    public DateTime? Firstvisit { get; set; }
-
-    public DateTime? Lastvisit { get; set; }
-
     public bool? Notified { get; set; }
 
 

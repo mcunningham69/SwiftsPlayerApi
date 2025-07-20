@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using SwiftsPlayerApi.Models; // adjust to match your namespace
 
@@ -23,6 +24,17 @@ namespace SwiftsPlayerApi.Controllers
             return await _context.Playerstatus.ToListAsync();
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Playerstatus>> GetPlayer(int id)
+        {
+            var player = await _context.Playerstatus.FindAsync(id);
+            if (player == null)
+                return NotFound();
+
+            return Ok(player);
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] List<Playerstatus> players)
         {
@@ -42,6 +54,7 @@ namespace SwiftsPlayerApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] Playerstatus updatedPlayer)
         {
+
             if (id != updatedPlayer.Playerid)
             {
                 Console.WriteLine($"❌ PUT rejected: URL ID {id} does not match body ID {updatedPlayer.Playerid}");
@@ -83,8 +96,6 @@ namespace SwiftsPlayerApi.Controllers
             target.Isadmin = source.Isadmin;
             target.Courtno = source.Courtno;
             target.Attendingsession = source.Attendingsession;
-            target.Firstvisit = source.Firstvisit;
-            target.Lastvisit = source.Lastvisit;
             target.Startedat = source.Startedat;
             target.Finishedat = source.Finishedat;
             target.Orderofplay = source.Orderofplay;

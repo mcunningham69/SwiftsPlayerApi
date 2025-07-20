@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SwiftsPlayerApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+096f8f20d582d5d0c6b92012d8ae1f579d7f4a68")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f733b96b90f0921eaa0e3858c48b3e300b747240")]
 [assembly: System.Reflection.AssemblyProductAttribute("SwiftsPlayerApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SwiftsPlayerApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

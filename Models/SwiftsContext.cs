@@ -40,7 +40,6 @@ public SwiftsContext(DbContextOptions<SwiftsContext> options)
             entity.Property(e => e.Firstname)
                 .HasMaxLength(100)
                 .HasColumnName("firstname");
-            entity.Property(e => e.Firstvisit).HasColumnName("firstvisit");
             entity.Property(e => e.Gameid).HasColumnName("gameid");
             entity.Property(e => e.DurationInSeconds).HasColumnName("durationinseconds");
             entity.Property(e => e.Gamescount).HasColumnName("gamescount");
@@ -56,7 +55,6 @@ public SwiftsContext(DbContextOptions<SwiftsContext> options)
             entity.Property(e => e.Isselectable).HasColumnName("isselectable");
             entity.Property(e => e.Istimeout).HasColumnName("istimeout");
             entity.Property(e => e.Iswaiting).HasColumnName("iswaiting");
-            entity.Property(e => e.Lastvisit).HasColumnName("lastvisit");
             entity.Property(e => e.Orderofplay).HasColumnName("orderofplay");
             entity.Property(e => e.Playercategories).HasColumnName("playercategories");
             entity.Property(e => e.Playerid).HasColumnName("playerid");

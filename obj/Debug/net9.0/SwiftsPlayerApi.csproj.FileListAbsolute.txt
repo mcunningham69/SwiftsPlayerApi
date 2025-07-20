@@ -138,8 +138,14 @@
 /Users/mcunningham/code/SwiftsPlayerApi/bin/Debug/net9.0/publish/SwiftsPlayerApi.deps.json
 /Users/mcunningham/code/SwiftsPlayerApi/bin/Debug/net9.0/publish/SwiftsPlayerApi.runtimeconfig.json
 /Users/mcunningham/code/SwiftsPlayerApi/bin/Debug/net9.0/publish/SwiftsPlayerApi.staticwebassets.endpoints.json
+/Users/mcunningham/GitHub/SwiftsPlayerApi/bin/Debug/net9.0/publish/web.config
 /Users/mcunningham/GitHub/SwiftsPlayerApi/bin/Debug/net9.0/appsettings.Development.json
 /Users/mcunningham/GitHub/SwiftsPlayerApi/bin/Debug/net9.0/appsettings.json
+/Users/mcunningham/GitHub/SwiftsPlayerApi/bin/Debug/net9.0/publish/appsettings.Development.json
+/Users/mcunningham/GitHub/SwiftsPlayerApi/bin/Debug/net9.0/publish/appsettings.json
+/Users/mcunningham/GitHub/SwiftsPlayerApi/bin/Debug/net9.0/publish/SwiftsPlayerApi.deps.json
+/Users/mcunningham/GitHub/SwiftsPlayerApi/bin/Debug/net9.0/publish/SwiftsPlayerApi.runtimeconfig.json
+/Users/mcunningham/GitHub/SwiftsPlayerApi/bin/Debug/net9.0/publish/SwiftsPlayerApi.staticwebassets.endpoints.json
 /Users/mcunningham/GitHub/SwiftsPlayerApi/bin/Debug/net9.0/SwiftsPlayerApi.staticwebassets.endpoints.json
 /Users/mcunningham/GitHub/SwiftsPlayerApi/bin/Debug/net9.0/SwiftsPlayerApi
 /Users/mcunningham/GitHub/SwiftsPlayerApi/bin/Debug/net9.0/SwiftsPlayerApi.deps.json
