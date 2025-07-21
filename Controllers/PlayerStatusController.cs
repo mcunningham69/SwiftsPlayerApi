@@ -25,7 +25,7 @@ namespace SwiftsPlayerApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Playerstatus>> GetPlayer(int id)
+        public async Task<ActionResult<Playerstatus>> GetPlayer(Guid id)
         {
             var player = await _context.Playerstatus.FindAsync(id);
             if (player == null)
