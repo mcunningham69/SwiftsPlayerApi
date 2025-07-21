@@ -33,26 +33,66 @@ namespace SwiftsPlayerApi.Controllers
 
             return Ok(player);
         }
-
-
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] List<Playerstatus> players)
         {
+            var created = new List<Playerstatus>();
+
             foreach (var p in players)
             {
-                var existing = await _context.Playerstatus.FindAsync(p.Playerid);
-                if (existing != null)
-                    _context.Entry(existing).CurrentValues.SetValues(p);
-                else
-                    _context.Playerstatus.Add(p);
+                 // Only add if Playerid is Guid.Empty (i.e. new record)
+                if (p.Playerid != Guid.Empty)
+                {
+                    var exists = await _context.Playerstatus
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(x => x.Playerid == p.Playerid);
+
+                    if (exists != null)
+                        continue;
+                }
+
+                var newEntity = new Playerstatus
+                {
+                    Playername = p.Playername,
+                    Firstname = p.Firstname,
+                    Surname = p.Surname,
+                    Email = p.Email,
+                    Visits = p.Visits,
+                    Isplaying = p.Isplaying,
+                    Iswaiting = p.Iswaiting,
+                    Isselectable = p.Isselectable,
+                    Isfacilitator = p.Isfacilitator,
+                    Ischoosing = p.Ischoosing,
+                    Istimeout = p.Istimeout,
+                    Warmingup = p.Warmingup,
+                    Grade = p.Grade,
+                    Gamescount = p.Gamescount,
+                    Ischosen = p.Ischosen,
+                    Isadmin = p.Isadmin,
+                    Courtno = p.Courtno,
+                    Attendingsession = p.Attendingsession,
+                    Startedat = p.Startedat,
+                    Finishedat = p.Finishedat,
+                    Orderofplay = p.Orderofplay,
+                    Squareid = p.Squareid,
+                    Gameid = p.Gameid,
+                    Playercategories = p.Playercategories,
+                    DurationInSeconds = p.DurationInSeconds,
+                    Notified = p.Notified,
+                    NeedsSync = p.NeedsSync
+                };
+
+                _context.Playerstatus.Add(newEntity);
+                created.Add(newEntity);
             }
 
             await _context.SaveChangesAsync();
-            return Ok();
+
+            return Ok(created); // Return list with new Playerid values
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Playerstatus updatedPlayer)
+        [HttpPut("{id:guid}")]
+        public async Task<IActionResult> Put(Guid id, [FromBody] Playerstatus updatedPlayer)
         {
 
             if (id != updatedPlayer.Playerid)
@@ -75,6 +115,21 @@ namespace SwiftsPlayerApi.Controllers
 
             return NoContent();
         }
+
+
+        [HttpPatch("{id}/squareid")]
+        public async Task<IActionResult> PatchSquareId(
+                int id,
+                [FromBody] string squareId)
+        {
+            var player = await _context.Playerstatus.FindAsync(id);
+            if (player == null) return NotFound();
+
+            player.Squareid = squareId;
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
 
         private void CopyValues(Playerstatus source, Playerstatus target)
         {
@@ -104,8 +159,10 @@ namespace SwiftsPlayerApi.Controllers
             target.Playercategories = source.Playercategories;
             target.DurationInSeconds = source.DurationInSeconds;
             target.Notified = source.Notified;
+            target.NeedsSync = source.NeedsSync;
         }
 
 
     }
 }
+
