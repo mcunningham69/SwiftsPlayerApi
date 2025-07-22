@@ -28,6 +28,7 @@ public SwiftsContext(DbContextOptions<SwiftsContext> options)
         {
             entity.HasKey(e => e.Playerid);
             entity.ToTable("playerstatus");
+            entity.Property(e => e.Uuid).HasColumnName("uuid"); // ✅ new line
 
             entity.Property(e => e.Attendingsession).HasColumnName("attendingsession");
             entity.Property(e => e.Courtno).HasColumnName("courtno");

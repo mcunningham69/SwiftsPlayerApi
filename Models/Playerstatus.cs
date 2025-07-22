@@ -24,6 +24,11 @@ public partial class Playerstatus
     [Column("playerid")]
     public Guid Playerid { get; set; }
 
+    [JsonPropertyName("uuid")]
+    [Column("uuid")]
+    public Guid Uuid { get; set; }
+
+
     [JsonPropertyName("playercategories")]
     [Column("playercategories")] // Use your actual column name here
     public PlayerCategories Playercategories { get; set; }

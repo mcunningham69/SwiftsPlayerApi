@@ -40,19 +40,24 @@ namespace SwiftsPlayerApi.Controllers
 
             foreach (var p in players)
             {
-                 // Only add if Playerid is Guid.Empty (i.e. new record)
-                if (p.Playerid != Guid.Empty)
-                {
-                    var exists = await _context.Playerstatus
-                        .AsNoTracking()
-                        .FirstOrDefaultAsync(x => x.Playerid == p.Playerid);
+                // Handle missing or placeholder UUIDs
+                if (p.Uuid == Guid.Empty)
+                    p.Uuid = Guid.NewGuid();
 
-                    if (exists != null)
-                        continue;
-                }
+                // Use UUID for deduplication, not Playerid
+                var exists = await _context.Playerstatus
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(x => x.Uuid == p.Uuid);
 
+                if (exists != null)
+                    continue;
+
+                // Create new record
                 var newEntity = new Playerstatus
                 {
+                    Playerid = Guid.NewGuid(),         // Server-generated backend ID
+                    Uuid = p.Uuid,                     // Client sync ID
+
                     Playername = p.Playername,
                     Firstname = p.Firstname,
                     Surname = p.Surname,
@@ -85,6 +90,7 @@ namespace SwiftsPlayerApi.Controllers
                 _context.Playerstatus.Add(newEntity);
                 created.Add(newEntity);
             }
+
 
             await _context.SaveChangesAsync();
 
@@ -133,6 +139,10 @@ namespace SwiftsPlayerApi.Controllers
 
         private void CopyValues(Playerstatus source, Playerstatus target)
         {
+            // 🆔 Identity fields
+            target.Uuid = source.Uuid;
+            target.Playerid = source.Playerid;
+
             target.Playername = source.Playername;
             target.Firstname = source.Firstname;
             target.Surname = source.Surname;
