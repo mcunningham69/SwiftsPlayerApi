@@ -19,11 +19,6 @@ public enum PlayerCategories
 public partial class Playerstatus
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    [JsonPropertyName("playerid")]
-    [Column("playerid")]
-    public Guid Playerid { get; set; }
-
     [JsonPropertyName("uuid")]
     [Column("uuid")]
     public Guid Uuid { get; set; }

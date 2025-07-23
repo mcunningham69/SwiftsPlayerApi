@@ -26,7 +26,7 @@ public SwiftsContext(DbContextOptions<SwiftsContext> options)
     {
         modelBuilder.Entity<Playerstatus>(entity =>
         {
-            entity.HasKey(e => e.Playerid);
+            entity.HasKey(e => e.Uuid);
             entity.ToTable("playerstatus");
             entity.Property(e => e.Uuid).HasColumnName("uuid"); // ✅ new line
 
@@ -58,7 +58,7 @@ public SwiftsContext(DbContextOptions<SwiftsContext> options)
             entity.Property(e => e.Iswaiting).HasColumnName("iswaiting");
             entity.Property(e => e.Orderofplay).HasColumnName("orderofplay");
             entity.Property(e => e.Playercategories).HasColumnName("playercategories");
-            entity.Property(e => e.Playerid).HasColumnName("playerid");
+            entity.Property(e => e.Uuid).HasColumnName("uuid");
             entity.Property(e => e.Playername)
                 .HasMaxLength(100)
                 .HasColumnName("playername");
