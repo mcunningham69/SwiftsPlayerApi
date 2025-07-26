@@ -1,6 +1,10 @@
+*.xlsx
 *.log
 &.DS_Store
 /bin/
 /obj/
 *.zip
 .fake
+*.dll
+*.pdb
+*.xlsx

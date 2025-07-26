@@ -32,7 +32,7 @@ public partial class Playerstatus
     [Column("playername")]
     public string? Playername { get; set; }
 
-     [JsonPropertyName("firstname")]
+    [JsonPropertyName("firstname")]
     [Column("firstname")]
     public string? Firstname { get; set; }
 
@@ -48,7 +48,7 @@ public partial class Playerstatus
     [Column("visits")]
     public int? Visits { get; set; }
 
-    [JsonPropertyName("durationInSeconds")]
+    [JsonPropertyName("durationinseconds")]
     [Column("durationinseconds")]
     public int? DurationInSeconds { get; set; }
 
@@ -136,8 +136,5 @@ public partial class Playerstatus
     [JsonPropertyName("notified")]
     [Column("notified")]
     public bool? Notified { get; set; }
+
 }
-
-
-
-
