@@ -73,7 +73,7 @@ public static class PlayerstatusMapping
 
         target.DurationInSeconds = source.DurationInSeconds;
         target.Notified = source.Notified;
-        target.NeedsSync = source.NeedsSync;
+       // target.NeedsSync = source.NeedsSync;
     }
 
     public static Playerstatus ToEntity(this PlayerStatusDTO source)
