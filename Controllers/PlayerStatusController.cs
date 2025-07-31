@@ -110,7 +110,7 @@ namespace SwiftsPlayerApi.Controllers
 
             existing.CopyFromDTO(updatedPlayer.ToDTO());
             existing.NeedsSync = false;
-            
+
 
             _context.Entry(existing).State = EntityState.Modified;
 
@@ -124,7 +124,7 @@ namespace SwiftsPlayerApi.Controllers
         [ProducesResponseType(typeof(PlayerStatusDTO), 200)]
         [ProducesResponseType(404)]
 
-      /*  [HttpPatch("{uuid:guid}/squareid")]
+        [HttpPatch("{uuid:guid}/squareid")]
         public async Task<ActionResult<PlayerStatusDTO>> PatchSquareId(Guid uuid, [FromBody] string squareId)
         {
             var player = await _context.Playerstatus.FirstOrDefaultAsync(p => p.Uuid == uuid);
@@ -132,17 +132,19 @@ namespace SwiftsPlayerApi.Controllers
                 return NotFound();
 
             player.Squareid = squareId;
-          
+
             await _context.SaveChangesAsync();
 
             _logger.LogInformation($"💾 SAVED: {player.Playername}, category={(int)player.Playercategories}, isWaiting={player.Iswaiting}, attending={player.Attendingsession}");
 
             return Ok(player.ToDTO());
-        }*/
-        
+        }
+
         [HttpPatch("{uuid:guid}")]
         public async Task<ActionResult<PlayerStatusDTO>> PatchPlayer(Guid uuid, [FromBody] PlayerStatusDTO dto)
         {
+            _logger.LogInformation($"📥 Incoming PATCH for {dto.Playername}: category={dto.Playercategories}, isWaiting={dto.Iswaiting}");
+
             if (uuid != dto.Uuid)
                 return BadRequest("UUID mismatch");
 
@@ -154,10 +156,12 @@ namespace SwiftsPlayerApi.Controllers
 
             player.CopyFromDTO(dto);
 
+
+
             // ✅ Force EF to track changes — essential fix
             _context.Entry(player).State = EntityState.Modified;
 
-            _context.Entry(player).State = EntityState.Modified;
+            //            _context.Entry(player).State = EntityState.Modified;
 
 
             await _context.SaveChangesAsync();
@@ -165,7 +169,7 @@ namespace SwiftsPlayerApi.Controllers
             _logger.LogInformation($"✅ Saved to DB: isWaiting={player.Iswaiting}, category={(int)player.Playercategories}");
 
             return Ok(player.ToDTO());
-}
+        }
 
 
 

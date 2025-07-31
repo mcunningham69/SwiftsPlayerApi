@@ -69,6 +69,8 @@ public static class PlayerstatusMapping
         //   target.Playercategories = Enum.IsDefined(typeof(PlayerCategories), source.Playercategories)
         //  ? (PlayerCategories)source.Playercategories
         //  : PlayerCategories.Pending;
+  Console.WriteLine($"🧾 CopyFromDTO: incoming category={source.Playercategories}");
+
         target.Playercategories = (PlayerCategories) source.Playercategories;
 
 
