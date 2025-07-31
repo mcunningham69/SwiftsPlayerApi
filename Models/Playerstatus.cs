@@ -10,9 +10,9 @@ namespace SwiftsPlayerApi.Models;
 public enum PlayerCategories
 {
     Pending = 0,
-    Chosen = 1,
-    Playing = 2,
-    Waiting = 3
+    Waiting = 1,
+    Chosen = 2,
+    Playing = 3
 }
 
 

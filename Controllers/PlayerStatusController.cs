@@ -11,11 +11,13 @@ namespace SwiftsPlayerApi.Controllers
     [ApiVersion("1.0")]
     public class PlayerStatusController : ControllerBase
     {
+        private readonly ILogger<PlayerStatusController> _logger;
         private readonly SwiftsContext _context;
 
-        public PlayerStatusController(SwiftsContext context)
+        public PlayerStatusController(SwiftsContext context, ILogger<PlayerStatusController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET all players
@@ -104,10 +106,13 @@ namespace SwiftsPlayerApi.Controllers
             if (existing == null)
                 return NotFound();
 
+            _logger.LogInformation($"📥 PATCH OLD incoming: {existing.Playername}, cat={existing.Playercategories}, isWaiting={existing.Iswaiting}");
+
             existing.CopyFromDTO(updatedPlayer.ToDTO());
             existing.NeedsSync = false;
-            //  existing.StatusChangedAt = DateTime.UtcNow;
+            
 
+            _context.Entry(existing).State = EntityState.Modified;
 
             await _context.SaveChangesAsync();
 
@@ -119,7 +124,7 @@ namespace SwiftsPlayerApi.Controllers
         [ProducesResponseType(typeof(PlayerStatusDTO), 200)]
         [ProducesResponseType(404)]
 
-        [HttpPatch("{uuid:guid}/squareid")]
+      /*  [HttpPatch("{uuid:guid}/squareid")]
         public async Task<ActionResult<PlayerStatusDTO>> PatchSquareId(Guid uuid, [FromBody] string squareId)
         {
             var player = await _context.Playerstatus.FirstOrDefaultAsync(p => p.Uuid == uuid);
@@ -127,28 +132,41 @@ namespace SwiftsPlayerApi.Controllers
                 return NotFound();
 
             player.Squareid = squareId;
+          
             await _context.SaveChangesAsync();
 
+            _logger.LogInformation($"💾 SAVED: {player.Playername}, category={(int)player.Playercategories}, isWaiting={player.Iswaiting}, attending={player.Attendingsession}");
+
             return Ok(player.ToDTO());
-        }
+        }*/
         
         [HttpPatch("{uuid:guid}")]
         public async Task<ActionResult<PlayerStatusDTO>> PatchPlayer(Guid uuid, [FromBody] PlayerStatusDTO dto)
         {
+            if (uuid != dto.Uuid)
+                return BadRequest("UUID mismatch");
+
             var player = await _context.Playerstatus.FirstOrDefaultAsync(p => p.Uuid == uuid);
             if (player == null)
                 return NotFound();
 
-            // Overwrite entity fields from DTO (your helper already handles nulls/defaults well)
+            _logger.LogInformation($"📥 PATCH incoming: {dto.Playername}, cat={dto.Playercategories}, isWaiting={dto.Iswaiting}");
+
             player.CopyFromDTO(dto);
 
-            // Optional: force an update timestamp or trigger update detection
-            player.Notified = false;
+            // ✅ Force EF to track changes — essential fix
+            _context.Entry(player).State = EntityState.Modified;
+
+            _context.Entry(player).State = EntityState.Modified;
+
 
             await _context.SaveChangesAsync();
 
+            _logger.LogInformation($"✅ Saved to DB: isWaiting={player.Iswaiting}, category={(int)player.Playercategories}");
+
             return Ok(player.ToDTO());
-        }
+}
+
 
 
 

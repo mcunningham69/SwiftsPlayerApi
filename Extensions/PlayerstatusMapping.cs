@@ -66,13 +66,14 @@ public static class PlayerstatusMapping
         target.Orderofplay = source.Orderofplay;
         target.Squareid = source.Squareid;
         target.Gameid = source.Gameid;
-        target.Playercategories = Enum.IsDefined(typeof(PlayerCategories), source.Playercategories)
-        ? (PlayerCategories)source.Playercategories
-        : PlayerCategories.Pending;
+        //   target.Playercategories = Enum.IsDefined(typeof(PlayerCategories), source.Playercategories)
+        //  ? (PlayerCategories)source.Playercategories
+        //  : PlayerCategories.Pending;
+        target.Playercategories = (PlayerCategories) source.Playercategories;
 
 
         target.DurationInSeconds = source.DurationInSeconds;
-        target.Notified = source.Notified;
+        target.Notified = false;// source.Notified;
        // target.NeedsSync = source.NeedsSync;
     }
 
