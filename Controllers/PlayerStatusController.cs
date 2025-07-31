@@ -106,7 +106,7 @@ namespace SwiftsPlayerApi.Controllers
 
             existing.CopyFromDTO(updatedPlayer.ToDTO());
             existing.NeedsSync = false;
-          //  existing.StatusChangedAt = DateTime.UtcNow;
+            //  existing.StatusChangedAt = DateTime.UtcNow;
 
 
             await _context.SaveChangesAsync();
@@ -131,6 +131,25 @@ namespace SwiftsPlayerApi.Controllers
 
             return Ok(player.ToDTO());
         }
+        
+        [HttpPatch("{uuid:guid}")]
+        public async Task<ActionResult<PlayerStatusDTO>> PatchPlayer(Guid uuid, [FromBody] PlayerStatusDTO dto)
+        {
+            var player = await _context.Playerstatus.FirstOrDefaultAsync(p => p.Uuid == uuid);
+            if (player == null)
+                return NotFound();
+
+            // Overwrite entity fields from DTO (your helper already handles nulls/defaults well)
+            player.CopyFromDTO(dto);
+
+            // Optional: force an update timestamp or trigger update detection
+            player.Notified = false;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(player.ToDTO());
+        }
+
 
 
     }
