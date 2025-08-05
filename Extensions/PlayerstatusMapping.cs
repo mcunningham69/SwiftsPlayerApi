@@ -13,6 +13,7 @@ public static class PlayerstatusMapping
             Firstname = p.Firstname ?? "",
             Surname = p.Surname ?? "",
             Email = p.Email ?? "",
+            Changed_by = p.Changed_by ?? "",
             Visits = p.Visits ?? 1,
             Isplaying = p.Isplaying ?? false,
             Iswaiting = p.Iswaiting ?? false,
@@ -47,6 +48,7 @@ public static class PlayerstatusMapping
         target.Firstname = source.Firstname;
         target.Surname = source.Surname;
         target.Email = source.Email;
+        target.Changed_by = source.Changed_by;
         target.Visits = source.Visits;
         target.Isplaying = source.Isplaying;
         target.Iswaiting = source.Iswaiting;

@@ -47,6 +47,10 @@ public SwiftsContext(DbContextOptions<SwiftsContext> options)
             entity.Property(e => e.Grade)
                 .HasMaxLength(100)
                 .HasColumnName("grade");
+
+            entity.Property(e => e.Changed_by)
+                .HasMaxLength(100)
+                .HasColumnName("changed_by");
             entity.Property(e => e.Isadmin).HasColumnName("isadmin");
             entity.Property(e => e.Ischoosing).HasColumnName("ischoosing");
             entity.Property(e => e.Ischosen).HasColumnName("ischosen");

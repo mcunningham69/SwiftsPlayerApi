@@ -47,6 +47,10 @@ public class PlayerStatusDTO
     [JsonPropertyName("grade")]
     public string? Grade { get; set; }
 
+
+    [JsonPropertyName("changed_by")]
+    public string? Changed_by { get; set; }
+
     [JsonPropertyName("gamescount")]
     public int? Gamescount { get; set; }
 

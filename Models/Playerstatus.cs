@@ -44,6 +44,10 @@ public partial class Playerstatus
     [Column("email")]
     public string? Email { get; set; }
 
+    [JsonPropertyName("changed_by")]
+    [Column("changed_by")]
+    public string? Changed_by { get; set; }
+
     [JsonPropertyName("visits")]
     [Column("visits")]
     public int? Visits { get; set; }
